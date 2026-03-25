@@ -1,1 +1,20 @@
-<p>type-list works!</p>
+<section class="contenedor">
+  <h1>Tipos de Pokémon</h1>
+  <p>Listado obtenido desde un segundo endpoint externo</p>
+
+  @if (cargando) {
+    <p>Cargando tipos...</p>
+  }
+
+  @if (error) {
+    <p class="error">{{ error }}</p>
+  }
+
+  @if (!cargando && tipos.results.length > 0) {
+    <ul class="lista">
+      @for (tipo of tipos.results; track tipo.url) {
+        <li>{{ tipo.name | titlecase }}</li>
+      }
+    </ul>
+  }
+</section>
